@@ -52,6 +52,8 @@ function procedure!(
     elseif args.constitutive == :bingham
         Ti < args.Te && liE!(dev)(ndrange=mp.np, mp, attr)
         Ti ≥ args.Te && bhP!(dev)(ndrange=mp.np, mp, attr, inv(ΔT))
+    elseif args.constitutive == :linearviscous
+        liV!(dev)(ndrange=mp.np, mp, attr, inv(ΔT))
     end
     return nothing
 end
